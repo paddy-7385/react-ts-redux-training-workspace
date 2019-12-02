@@ -4,11 +4,12 @@ import TodoListItem from './TodoListItem'
 
 export default function TodoList ({todos, onClick})
 {
+  console.log(todos);
   return (
     <ul>
-       {todos.map((item, index) => {
+       {todos.map((item, index) => (
           <TodoListItem {...item} onClick = {() => onClick(item.text)} /> 
-       })}
+       ))}
     </ul>
   )
 }

@@ -1,21 +1,20 @@
-import { createStore, combineReducers } from "redux";
-import todosReducer from "./reducers/todosReducer";
-import filterReducer from "./reducers/filterReducer";
+// import { createStore, combineReducers } from "redux";
+// import todosReducer from "./reducers/todosReducer";
+// import filterReducer from "./reducers/filterReducer";
 
-import { addTodo, toggleTodo, setFilter } from "./actions";
+// import { addTodo, toggleTodo, setFilter } from "./actions";
 
-let store = createStore(
-  combineReducers({ todos: todosReducer, filter: filterReducer })
-);
+// let store = createStore(
+//   combineReducers({ todos: todosReducer, filter: filterReducer })
+// );
 
-store.subscribe(() => console.log(store.getState()));
+// store.subscribe(() => console.log(store.getState()));
 
-store.dispatch(addTodo("Onion"));
-store.dispatch(addTodo("Milk"));
-store.dispatch(addTodo("Cheese"));
-store.dispatch(toggleTodo("Milk"));
-store.dispatch(setFilter("SHOW_COMPLETED"));
-
+// store.dispatch(addTodo("Onion"));
+// store.dispatch(addTodo("Milk"));
+// store.dispatch(addTodo("Cheese"));
+// store.dispatch(toggleTodo("Milk"));
+// store.dispatch(setFilter("SHOW_COMPLETED"));
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
@@ -36,15 +35,23 @@ class App extends Component<AppProps, AppState> {
             text: 'Milk',
             completed: false
         };
+
+    var obj2 =  {
+        text: 'Onion',
+        completed: true
+    };
     this.state = {
-      todos : [obj]
+      todos : [obj, obj2]
     };
   }
 
+  OnChageHandler(){
+
+  }
   render() {
     return (
       <div>
-        <TodoList todos = {this.state.todos}/>
+        <TodoList todos = {this.state.todos} onClick = {this.OnChageHandler}/>
       </div>
     );
   }
