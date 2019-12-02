@@ -12,7 +12,7 @@ export function toggleTodo(text: string) {
   };
 }
 
-export function setFilter(text: string) {
+export function setVisibility(text: string) {
   return {
     type: "SET_FILTER",
     visibility: text

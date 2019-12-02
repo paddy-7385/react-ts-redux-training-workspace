@@ -19,8 +19,11 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import TodoList from './components/TodoList';
-import AddTodo from './components/AddTodo';
-import FilterButton from './components/FilterButton';
+//import AddTodo from './components/AddTodo';
+import FilterContainer from './containers/FilterContainer';
+import { createStore} from "redux";
+import { Provider  } from "react-redux";
+import  reducer  from "./reducers";
 
 import './style.css';
 
@@ -28,6 +31,7 @@ interface AppProps { }
 interface AppState {
   name: string;
 }
+
 
 class App extends Component<AppProps, AppState> {
   constructor(props) {
@@ -37,7 +41,6 @@ class App extends Component<AppProps, AppState> {
       todos : []
     };
 
-    this.OnChageHandler = this.OnChageHandler.bind(this);
     this.onClickAddHandler = this.onClickAddHandler.bind(this);
   }
 
@@ -56,18 +59,21 @@ class App extends Component<AppProps, AppState> {
 
   render() {
     return (
-      <div>
-        <FilterButton value = "Show All" name = "SHOW_ALL" filter = "SHOW_ALL"/>
-
-        <FilterButton value = "Show Completed" name = "SHOW_COMPLETED" filter = "SHOW_COMPLETEDss"/>
-
-        <FilterButton value = "Show Pending" name = "SHOW_PENDING" filter = "SHOW_PENDING"/>
-
-        <AddTodo onClickAdd = {this.onClickAddHandler}/>
-        <TodoList todos = {this.state.todos} onClick = {this.OnChageHandler}/>
+      <div>      
+        <FilterContainer />
       </div>
     );
   }
 }
 
-render(<App />, document.getElementById('root'));
+const store = createStore(reducer);
+store.subscribe(() => console.log(store.getState()));
+
+
+render(
+  <Provider store={store}>
+  <App />
+  </Provider>
+  , 
+  document.getElementById('root')
+);
