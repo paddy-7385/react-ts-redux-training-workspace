@@ -19,7 +19,7 @@ store.dispatch(setFilter("SHOW_COMPLETED"));
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import ToDoList from './components/ToDoList';
+import TodoList from './components/TodoList';
 
 import './style.css';
 
@@ -44,7 +44,7 @@ class App extends Component<AppProps, AppState> {
   render() {
     return (
       <div>
-        <ToDoList todos= {this.state.todos}/>
+        <TodoList todos = {this.state.todos}/>
       </div>
     );
   }

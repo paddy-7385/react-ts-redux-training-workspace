@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default  function ToDoListItem ({text,completed,onClick})
-{
+export default  function TodoListItem ({text,completed,onClick})
+{  
   return (
     <li onClick = {onClick} 
         style = {{textDecoration : completed ? 'line-through' : 'none' }}>
