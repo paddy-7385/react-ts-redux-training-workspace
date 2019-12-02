@@ -15,3 +15,39 @@ store.dispatch(addTodo("Milk"));
 store.dispatch(addTodo("Cheese"));
 store.dispatch(toggleTodo("Milk"));
 store.dispatch(setFilter("SHOW_COMPLETED"));
+
+
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import ToDoList from './components/ToDoList';
+
+import './style.css';
+
+interface AppProps { }
+interface AppState {
+  name: string;
+}
+
+class App extends Component<AppProps, AppState> {
+  constructor(props) {
+    super(props);
+
+    var obj =  {
+            text: 'Milk',
+            completed: false
+        };
+    this.state = {
+      todos : [obj]
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <ToDoList todos= {this.state.todos}/>
+      </div>
+    );
+  }
+}
+
+render(<App />, document.getElementById('root'));
