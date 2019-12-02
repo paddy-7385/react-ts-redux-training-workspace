@@ -19,8 +19,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import TodoList from './components/TodoList';
-//import AddTodo from './components/AddTodo';
+
 import FilterContainer from './containers/FilterContainer';
+import TodoAdderContainer from './containers/TodoAdderContainer';
 import { createStore} from "redux";
 import { Provider  } from "react-redux";
 import  reducer  from "./reducers";
@@ -61,6 +62,7 @@ class App extends Component<AppProps, AppState> {
     return (
       <div>      
         <FilterContainer />
+        <TodoAdderContainer />
       </div>
     );
   }
