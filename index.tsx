@@ -19,6 +19,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import TodoList from './components/TodoList';
+import AddTodo from './components/AddTodo';
 
 import './style.css';
 
@@ -31,26 +32,31 @@ class App extends Component<AppProps, AppState> {
   constructor(props) {
     super(props);
 
-    var obj =  {
-            text: 'Milk',
-            completed: false
-        };
-
-    var obj2 =  {
-        text: 'Onion',
-        completed: true
-    };
     this.state = {
-      todos : [obj, obj2]
+      todos : []
     };
+
+    this.OnChageHandler = this.OnChageHandler.bind(this);
+    this.onClickAddHandler = this.onClickAddHandler.bind(this);
   }
 
-  OnChageHandler(){
-
+  OnChageHandler(value){
+   console.log(value);
   }
+
+  onClickAddHandler(item){
+    var obj= {
+      text : item,
+      completed: false
+    };
+    var newTodos = [...this.state.todos,obj];
+    this.setState({todos: newTodos });
+  }
+
   render() {
     return (
       <div>
+        <AddTodo onClickAdd = {this.onClickAddHandler}/>
         <TodoList todos = {this.state.todos} onClick = {this.OnChageHandler}/>
       </div>
     );

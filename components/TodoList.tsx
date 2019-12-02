@@ -3,8 +3,7 @@ import React from 'react'
 import TodoListItem from './TodoListItem'
 
 export default function TodoList ({todos, onClick})
-{
-  console.log(todos);
+{  
   return (
     <ul>
        {todos.map((item, index) => (
