@@ -20,6 +20,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
+import FilterButton from './components/FilterButton';
 
 import './style.css';
 
@@ -56,6 +57,12 @@ class App extends Component<AppProps, AppState> {
   render() {
     return (
       <div>
+        <FilterButton value = "Show All" name = "SHOW_ALL" filter = "SHOW_ALL"/>
+
+        <FilterButton value = "Show Completed" name = "SHOW_COMPLETED" filter = "SHOW_COMPLETEDss"/>
+
+        <FilterButton value = "Show Pending" name = "SHOW_PENDING" filter = "SHOW_PENDING"/>
+
         <AddTodo onClickAdd = {this.onClickAddHandler}/>
         <TodoList todos = {this.state.todos} onClick = {this.OnChageHandler}/>
       </div>
